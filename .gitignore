@@ -16,9 +16,13 @@ develop-eggs
 .installed.cfg
 lib
 lib64
+include
+local
+share
 
 # Installer logs
 pip-log.txt
+pip-selfcheck.json
 
 # Unit test / coverage reports
 .coverage
