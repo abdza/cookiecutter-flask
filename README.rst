@@ -40,10 +40,10 @@ Features
 To Deploy In Production(Ubuntu)
 -------------------------------
 
-# copy/clone folder into /opt
-# create postgres database and user
-# copy appname/deployment/appname.conf.init to /etc/init/appname.conf
-# copy appname/deployment/appname.conf.nginx to /etc/nginx/sites-available/appname.conf
+- copy/clone folder into /opt
+- create postgres database and user
+- copy appname/deployment/appname.conf.init to /etc/init/appname.conf
+- copy appname/deployment/appname.conf.nginx to /etc/nginx/sites-available/appname.conf
 
 
 Screenshots
@@ -78,6 +78,12 @@ BSD licensed.
 
 Changelog
 ---------
+
+0.10.0 (29/06/2016)
+*******************
+
+- Changed deployment from using guicorn to using uwsgi
+- Added default file settings for ubuntu nginx deployment
 
 0.9.0 (03/06/2016)
 ******************
