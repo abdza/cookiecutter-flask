@@ -82,7 +82,7 @@ Changelog
 0.10.0 (29/06/2016)
 *******************
 
-- Changed deployment from using guicorn to using uwsgi
+- Changed deployment from using gunicorn to using uwsgi
 - Added default file settings for ubuntu nginx deployment
 
 0.9.0 (03/06/2016)
