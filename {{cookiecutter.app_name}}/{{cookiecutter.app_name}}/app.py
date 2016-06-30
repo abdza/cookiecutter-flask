@@ -4,7 +4,7 @@ from flask import Flask, render_template
 
 from {{cookiecutter.app_name}} import public, user
 from {{cookiecutter.app_name}}.assets import assets
-from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate
+from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, admin, api
 from {{cookiecutter.app_name}}.settings import ProdConfig
 
 
@@ -18,6 +18,7 @@ def create_app(config_object=ProdConfig):
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)
+    admin_views(app)
     return app
 
 
@@ -31,6 +32,8 @@ def register_extensions(app):
     login_manager.init_app(app)
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
+    admin.init_app(app)
+    api.init_app(app)
     return None
 
 
@@ -40,6 +43,12 @@ def register_blueprints(app):
     app.register_blueprint(user.views.blueprint)
     return None
 
+def admin_views(app):
+    user.admin.add_views(admin,db)
+    return None
+
+def api_resources():
+    return None
 
 def register_errorhandlers(app):
     """Register error handlers."""
