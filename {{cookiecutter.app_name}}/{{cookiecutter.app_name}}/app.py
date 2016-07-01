@@ -43,12 +43,15 @@ def register_blueprints(app):
     app.register_blueprint(user.views.blueprint)
     return None
 
+
 def admin_views(app):
     user.admin.add_views(admin,db)
     return None
 
+
 def api_resources():
     return None
+
 
 def register_errorhandlers(app):
     """Register error handlers."""

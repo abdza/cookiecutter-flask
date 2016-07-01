@@ -63,6 +63,7 @@ class SurrogatePK(object):
             return cls.query.get(int(record_id))
         return None
 
+
 class SyncModel(object):
     """A mixin that helps with online offline sync"""
 
@@ -73,8 +74,8 @@ class SyncModel(object):
 
     @classmethod
     def __declare_last__(cls):
-        event.listen(cls,'before_insert',cls.after_updates)
-        event.listen(cls,'before_update',cls.after_updates)
+        event.listen(cls, 'before_insert', cls.after_updates)
+        event.listen(cls, 'before_update', cls.after_updates)
 
     def delete(self, commit=True):
         self.deleted = True
@@ -91,11 +92,12 @@ class SyncModel(object):
         return self
 
     @staticmethod
-    def after_updates(mapper,connection,target):
+    def after_updates(mapper, connection, target):
         try:
             target.ts = db.session.query(func.max(mapper.mapped_table.columns['ts'])).scalar() + 1
         except:
             target.ts = 1
+
 
 def reference_col(tablename, nullable=False, pk_name='id', **kwargs):
     """Column that adds primary key foreign key reference.

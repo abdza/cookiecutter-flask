@@ -16,13 +16,16 @@ class UserManagementAdmin(ModelView):
     def inaccessible_callback(self,name,**kwargs):
         return redirect(url_for('public.home',next=request.url))
 
+
 class UserAdmin(UserManagementAdmin):
-    form_excluded_columns = ['password','creations','order_roles','staffs','roles']
+    form_excluded_columns = ['password', 'creations', 'order_roles', 'staffs', 'roles']
     column_exclude_list = ['password',]
+
 
 class RoleAdmin(UserManagementAdmin):
     pass
 
+
 def add_views(admin,db):
-    admin.add_view(UserAdmin(User,db.session,endpoint='useradmin'))
-    admin.add_view(RoleAdmin(Role,db.session,endpoint='roleadmin'))
+    admin.add_view(UserAdmin(User, db.session,endpoint='useradmin'))
+    admin.add_view(RoleAdmin(Role, db.session,endpoint='roleadmin'))
