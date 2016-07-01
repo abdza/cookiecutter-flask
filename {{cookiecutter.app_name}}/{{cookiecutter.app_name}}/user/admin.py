@@ -6,6 +6,7 @@ from flask import redirect, request, url_for
 
 from .models import User, Role
 
+
 class UserManagementAdmin(ModelView):
 
     def is_accessible(self):
@@ -26,6 +27,6 @@ class RoleAdmin(UserManagementAdmin):
     pass
 
 
-def add_views(admin,db):
+def add_views(admin, db):
     admin.add_view(UserAdmin(User, db.session, endpoint='useradmin'))
     admin.add_view(RoleAdmin(Role, db.session, endpoint='roleadmin'))
