@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 """The user module."""
-from . import views,admin  # noqa
+from . import views, admin  # noqa

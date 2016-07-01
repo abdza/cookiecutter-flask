@@ -45,7 +45,7 @@ def register_blueprints(app):
 
 
 def admin_views(app):
-    user.admin.add_views(admin,db)
+    user.admin.add_views(admin, db)
     return None
 
 
