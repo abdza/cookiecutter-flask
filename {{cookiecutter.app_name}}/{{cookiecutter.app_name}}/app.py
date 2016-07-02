@@ -45,11 +45,13 @@ def register_blueprints(app):
 
 
 def admin_views(app):
+    """Register admin views."""
     user.admin.add_views(admin, db)
     return None
 
 
 def api_resources():
+    """Link up restful controllers."""
     return None
 
 
