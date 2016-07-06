@@ -5,6 +5,10 @@ from sqlalchemy.orm import relationship
 from .compat import basestring
 from .extensions import db
 
+from sqlalchemy import event
+from sqlalchemy.sql.expression import func
+
+
 # Alias common SQLAlchemy names
 Column = db.Column
 relationship = relationship

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+"""Flask Admin admins."""
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import BaseView, expose
 
@@ -23,12 +25,14 @@ class UserManagementAdmin(ModelView):
 
 class UserAdmin(UserManagementAdmin):
     """User admin."""
+
     form_excluded_columns = ['password', 'creations', 'order_roles', 'staffs', 'roles']
     column_exclude_list = ['password', ]
 
 
 class RoleAdmin(UserManagementAdmin):
     """Role admin. Currently use default."""
+
     pass
 
 
