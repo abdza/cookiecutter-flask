@@ -16,7 +16,7 @@ class Role(SurrogatePK, Model):
     user_id = reference_col('users', nullable=True)
     user = relationship('User', backref='roles')
 
-    def __init__(self, name, **kwargs):
+    def __init__(self, name='Role', **kwargs):
         """Create instance."""
         db.Model.__init__(self, name=name, **kwargs)
 
@@ -39,7 +39,7 @@ class User(UserMixin, SurrogatePK, Model):
     active = Column(db.Boolean(), default=False)
     is_admin = Column(db.Boolean(), default=False)
 
-    def __init__(self, username, email, password=None, **kwargs):
+    def __init__(self, username='Username', email='email', password=None, **kwargs):
         """Create instance."""
         db.Model.__init__(self, username=username, email=email, **kwargs)
         if password:
