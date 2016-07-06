@@ -64,6 +64,45 @@ class SurrogatePK(object):
         return None
 
 
+class SyncModel(object):
+    """A mixin that helps with online offline sync."""
+
+    __table_args__ = {'extend_existing': True}
+
+    ts = db.Column(db.Integer)
+    deleted = db.Column(db.Boolean)
+
+    @classmethod
+    def __declare_last__(cls):
+        """Link up after_updates to changes to update the ts."""
+        event.listen(cls, 'before_insert', cls.after_updates)
+        event.listen(cls, 'before_update', cls.after_updates)
+
+    def delete(self, commit=True):
+        """Method to toggle to delete the object."""
+        self.deleted = True
+        db.session.add(self)
+        if commit:
+            db.session.commit()
+        return self
+
+    def undelete(self, commit=True):
+        """Method to undo delete on the object."""
+        self.deleted = False
+        db.session.add(self)
+        if commit:
+            db.session.commit()
+        return self
+
+    @staticmethod
+    def after_updates(mapper, connection, target):
+        """Update ts in every updates."""
+        try:
+            target.ts = db.session.query(func.max(mapper.mapped_table.columns['ts'])).scalar() + 1
+        except:
+            target.ts = 1
+
+
 def reference_col(tablename, nullable=False, pk_name='id', **kwargs):
     """Column that adds primary key foreign key reference.
 

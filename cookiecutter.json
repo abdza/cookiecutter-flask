@@ -4,5 +4,6 @@
 	"github_username": "abdza",
 	"project_name": "My Flask App",
 	"app_name": "myflaskapp",
-	"project_short_description": "A flasky app."
+	"project_short_description": "A flasky app.",
+	"server_url": "myapp.abdza.my"
 }
