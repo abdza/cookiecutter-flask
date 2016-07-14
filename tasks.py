@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Invoke tasks."""
-import os
 import json
+import os
 import shutil
 
-from invoke import task, run
+from invoke import run, task
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(HERE, 'cookiecutter.json'), 'r') as fp:

@@ -3,7 +3,8 @@
 from flask import Flask, render_template
 from {{cookiecutter.app_name}} import public, user
 from {{cookiecutter.app_name}}.assets import assets
-from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, admin, api
+from {{cookiecutter.app_name}}.extensions import (admin, api, bcrypt, cache, csrf_protect, db, debug_toolbar,
+                                                  login_manager, migrate)
 from {{cookiecutter.app_name}}.settings import ProdConfig
 
 

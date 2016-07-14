@@ -2,7 +2,6 @@
 """Public section, including homepage and signup."""
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
-
 from {{cookiecutter.app_name}}.extensions import login_manager
 from {{cookiecutter.app_name}}.public.forms import LoginForm
 from {{cookiecutter.app_name}}.user.forms import RegisterForm

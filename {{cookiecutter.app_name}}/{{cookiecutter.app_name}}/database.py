@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 """Database module, including the SQLAlchemy database object and DB-related utilities."""
+from sqlalchemy import event
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.expression import func
 
 from .compat import basestring
 from .extensions import db
-
-from sqlalchemy import event
-from sqlalchemy.sql.expression import func
-
 
 # Alias common SQLAlchemy names
 Column = db.Column

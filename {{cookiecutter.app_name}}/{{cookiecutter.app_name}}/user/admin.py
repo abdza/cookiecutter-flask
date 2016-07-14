@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """Flask Admin admins."""
-from flask_admin.contrib.sqla import ModelView
-from flask_admin import BaseView, expose
-
 import flask_login as login
 from flask import redirect, request, url_for
+from flask_admin import BaseView, expose
+from flask_admin.contrib.sqla import ModelView
 
-from .models import User, Role
+from .models import Role, User
 
 
 class UserManagementAdmin(ModelView):
