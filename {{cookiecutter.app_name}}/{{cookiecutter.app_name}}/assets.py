@@ -4,6 +4,8 @@ from flask_assets import Bundle, Environment
 
 css = Bundle(
     'libs/bootstrap/dist/css/bootstrap.css',
+    'libs/font-awesome4/css/font-awesome.min.css',
+    'libs/material-design/material-icons.css',
     'css/style.css',
     filters='cssmin',
     output='public/css/common.css'
