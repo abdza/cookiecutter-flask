@@ -1,6 +1,8 @@
+{% raw %}
 {% extends 'admin/master.html' %}
 {% block body %}
 <div class="jumbotron">
-	<h1>Welcome to {{cookiecutter.project_name}}</h1>
+	<h1>Welcome to {% endraw %}{{cookiecutter.project_name}}{% raw %}</h1>
 </div>
 {% endblock %}
+{% endraw %}
