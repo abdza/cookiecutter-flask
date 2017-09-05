@@ -2,11 +2,11 @@
 """Public section, including homepage and signup."""
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
-from {{cookiecutter.app_name}}.extensions import login_manager
-from {{cookiecutter.app_name}}.public.forms import LoginForm
-from {{cookiecutter.app_name}}.user.forms import RegisterForm
-from {{cookiecutter.app_name}}.user.models import User
-from {{cookiecutter.app_name}}.utils import flash_errors
+from ..extensions import login_manager
+from .forms import LoginForm
+from ..user.forms import RegisterForm
+from ..user.models import User
+from ..utils import flash_errors
 
 blueprint = Blueprint('public', __name__, static_folder='../static')
 

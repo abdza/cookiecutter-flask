@@ -3,8 +3,8 @@
 import datetime as dt
 
 from flask_login import UserMixin
-from {{cookiecutter.app_name}}.database import Column, Model, SurrogatePK, db, reference_col, relationship
-from {{cookiecutter.app_name}}.extensions import bcrypt
+from ..database import Column, Model, SurrogatePK, db, reference_col, relationship
+from ..extensions import bcrypt
 
 
 class Role(SurrogatePK, Model):

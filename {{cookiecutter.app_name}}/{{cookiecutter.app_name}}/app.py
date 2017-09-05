@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
 from flask import Flask, render_template
-from {{cookiecutter.app_name}} import public, user
-from {{cookiecutter.app_name}}.assets import assets
-from {{cookiecutter.app_name}}.extensions import (admin, api, bcrypt, cache, csrf_protect, db, debug_toolbar,
+import public, user
+from .assets import assets
+from .extensions import (admin, api, bcrypt, cache, csrf_protect, db, debug_toolbar,
                                                   login_manager, migrate)
-from {{cookiecutter.app_name}}.settings import ProdConfig
+from .settings import ProdConfig
 
 
 def create_app(config_object=ProdConfig):
