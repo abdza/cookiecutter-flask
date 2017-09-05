@@ -3,12 +3,14 @@
 from flask_admin import Admin
 from flask_bcrypt import Bcrypt
 from flask_caching import Cache
-from flask_debugtoolbar import DebugToolbarExtension
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from flask_restful import Api
+from flask_rest_jsonapi import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CsrfProtect
+import os
+if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
+    from flask_debugtoolbar import DebugToolbarExtension
 
 bcrypt = Bcrypt()
 csrf_protect = CsrfProtect()
@@ -16,6 +18,8 @@ login_manager = LoginManager()
 db = SQLAlchemy()
 migrate = Migrate()
 cache = Cache()
-debug_toolbar = DebugToolbarExtension()
 admin = Admin(template_mode='bootstrap3')
-api = Api(prefix='/api')
+api = Api()
+
+if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
+    debug_toolbar = DebugToolbarExtension()

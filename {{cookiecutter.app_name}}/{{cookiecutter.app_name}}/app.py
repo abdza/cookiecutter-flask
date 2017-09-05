@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
 from flask import Flask, render_template
-import public, user
+import os, public, user
 from .assets import assets
-from .extensions import (admin, api, bcrypt, cache, csrf_protect, db, debug_toolbar,
-                                                  login_manager, migrate)
+from .extensions import (admin, api, bcrypt, cache, csrf_protect, db, login_manager, migrate)
 from .settings import ProdConfig
+if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
+    from .extensions import debug_toolbar
 
 
 def create_app(config_object=ProdConfig):
@@ -30,10 +31,13 @@ def register_extensions(app):
     db.init_app(app)
     csrf_protect.init_app(app)
     login_manager.init_app(app)
-    debug_toolbar.init_app(app)
     migrate.init_app(app, db)
     admin.init_app(app)
     api.init_app(app)
+
+    if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
+        debug_toolbar.init_app(app)
+
     return None
 
 
