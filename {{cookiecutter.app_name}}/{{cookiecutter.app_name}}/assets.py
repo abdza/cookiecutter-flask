@@ -17,6 +17,7 @@ css = Bundle(
 js = Bundle(
     'libs/jQuery/dist/jquery.js',
     'libs/bootstrap/dist/js/bootstrap.js',
+    'libs/bootstrap/dist/js/bootstrap-datepicker.js',
     'libs/adminLTE/js/adminlte.js',
     'libs/adminLTE/js/app.js',
     'js/plugins.js',
