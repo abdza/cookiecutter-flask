@@ -1,47 +1,63 @@
 # Everything needed in production
 
-setuptools==20.2.2
+setuptools==35.0.2
 wheel==0.29.0
 
 # Flask
-Flask==0.10.1
-MarkupSafe==0.23
-Werkzeug==0.11.4
-Jinja2==2.8
+Flask==0.12.1
+MarkupSafe==1.0
+Werkzeug==0.12.1
+Jinja2==2.9.6
 itsdangerous==0.24
 
 # Database
-Flask-SQLAlchemy==2.1
-psycopg2==2.6.1
-SQLAlchemy==1.0.12
+Flask-SQLAlchemy==2.2
+psycopg2==2.7.1
+SQLAlchemy==1.1.9
 
 # Migrations
-Flask-Migrate==1.8.0
+Flask-Migrate==2.0.3
 
 # Forms
-Flask-WTF==0.12
+Flask-WTF==0.14.2
 WTForms==2.1
 
 # Deployment
-uwsgi
+uwsgi==2.0.15
 
 # Assets
-Flask-Assets==0.11
-cssmin>=0.2.0
-jsmin>=2.0.11
+Flask-Assets==0.12
+cssmin==0.2.0
+jsmin==2.2.2
 
 # Auth
-Flask-Login==0.3.2
+Flask-Login==0.4.0
 Flask-Bcrypt==0.7.1
 
 # Caching
-Flask-Cache>=0.13.1
-
-# Debug toolbar
-Flask-DebugToolbar==0.10.0
+Flask-Cache==1.2.0
 
 # Admin
-Flask-Admin
+-e git+https://github.com/abdza/flask-admin.git#egg=Flask-Admin
 
 # REST
-flask-restful
+flask-rest-jsonapi==0.12.4
+
+#Mail
+Flask-Mail==0.9.1
+
+#Localisation
+Flask-BabelEx==0.9.3
+
+#Request
+requests==2.18.1
+
+#Async stuff
+Flask-celery
+redis==2.10.5
+
+#Flask Chartjs
+-e git+https://github.com/abdza/Flask-Chartjs.git#egg=Flask-Chartjs
+
+#PDF output
+flask_weasyprint==0.5
