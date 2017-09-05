@@ -40,8 +40,10 @@ chart = ChartJs()
 api = Api()
 mail = Mail()
 babel = Babel()
-if 'CELERY_BROKER_URL' in Config:
+try:
     celery = Celery(__name__, broker=Config.CELERY_BROKER_URL)
+except:
+    pass
 
 if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
     debug_toolbar = DebugToolbarExtension()
