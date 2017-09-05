@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Extensions module. Each extension is initialized in the app factory located in app.py."""
-from flask_admin import Admin
+from flask_admin import Admin, AdminIndexView
 from flask_bcrypt import Bcrypt
 from flask_caching import Cache
 from flask_login import LoginManager
@@ -36,10 +36,12 @@ admin = Admin(
         'User Management': 'fa fa-user',
     }
 )
+chart = ChartJs()
 api = Api()
 mail = Mail()
 babel = Babel()
-celery = Celery(__name__, broker=Config.CELERY_BROKER_URL)
+if 'CELERY_BROKER_URL' in Config:
+    celery = Celery(__name__, broker=Config.CELERY_BROKER_URL)
 
 if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
     debug_toolbar = DebugToolbarExtension()

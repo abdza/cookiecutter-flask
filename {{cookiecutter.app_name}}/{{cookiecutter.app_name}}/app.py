@@ -1,12 +1,41 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
-from flask import Flask, render_template
+from flask import Flask, render_template, g, current_app
 import os, public, user
 from .assets import assets
-from .extensions import (admin, api, bcrypt, cache, csrf_protect, db, login_manager, migrate)
+from .extensions import (admin, api, bcrypt, cache, csrf_protect, db,
+                         login_manager, migrate, mail, babel)
 from .settings import ProdConfig
 if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
     from .extensions import debug_toolbar
+
+@babel.localeselector
+def get_locale():
+    return g.get('lang_code', current_app.config['BABEL_DEFAULT_LOCALE'])
+
+@babel.timezoneselector
+def get_timezone():
+    user = g.get('user', None)
+    if user is not None:
+        return user.timezone
+
+
+@login_manager.request_loader
+def load_user_from_request(request):
+
+    uauth = request.authorization
+
+    if uauth:
+        user = User.query.filter_by(username=uauth.username).first()
+        if user and user.check_password(uauth.password):
+            return user
+    elif 'Authorization' in request.headers:
+        tokens = request.headers['Authorization'].split(' ')
+        user = User.query.filter_by(token = tokens[1]).first()
+        if user:
+            return user
+    # finally, return None if both methods did not login the user
+    return None
 
 
 def create_app(config_object=ProdConfig):
