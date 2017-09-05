@@ -35,7 +35,7 @@ Flask-Login==0.4.0
 Flask-Bcrypt==0.7.1
 
 # Caching
-Flask-Cache==1.2.0
+Flask-Caching==1.2.0
 
 # Admin
 -e git+https://github.com/abdza/flask-admin.git#egg=Flask-Admin
