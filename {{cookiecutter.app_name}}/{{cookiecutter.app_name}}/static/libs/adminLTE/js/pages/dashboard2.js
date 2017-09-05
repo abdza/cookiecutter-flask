@@ -1,3 +1,4 @@
+{% raw %}
 $(function () {
 
   'use strict';
@@ -272,3 +273,4 @@ $(function () {
     });
   });
 });
+{% endraw %}
