@@ -63,6 +63,8 @@ def register_extensions(app):
     migrate.init_app(app, db)
     admin.init_app(app)
     api.init_app(app)
+    mail.init_app(app)
+    babel.init_app(app)
 
     if os.environ.get('{{cookiecutter.app_name | upper}}_ENV')!='prod':
         debug_toolbar.init_app(app)
