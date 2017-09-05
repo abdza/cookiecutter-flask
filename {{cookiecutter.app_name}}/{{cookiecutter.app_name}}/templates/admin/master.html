@@ -33,9 +33,9 @@
     <header class='main-header'>
 	    <a href="{{ url_for('admin.index')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>1N</b></span>
+      <span class="logo-mini"><b>{% endraw %}{{cookiecutter.app_name[0:2] | upper }}</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>1NRECC</b></span>
+      <span class="logo-lg"><b>{{cookiecutter.app_name | upper }}{% raw %}</b></span>
     </a>
 
       <nav class="navbar navbar-static-top" role="navigation">
